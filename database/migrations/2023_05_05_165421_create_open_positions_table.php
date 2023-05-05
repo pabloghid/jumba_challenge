@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('open_positions', function (Blueprint $table) {
             $table->id();
-            $table->date("RptDt");
-            $table->string("TckrSymb");
+            $table->date("date");
+            $table->string("tracker_symbol");
             $table->string("ISIN");
-            $table->string("Asst");
-            $table->integer("BalQty");
-            $table->float("TradAvrgPric");
-            $table->integer("PricFctr");
-            $table->float("BalVal");
+            $table->string("asset");
+            $table->integer("balance_quantity");
+            $table->double("trade_average_price");
+            $table->integer("price_factor");
+            $table->double("balance_value");
             $table->timestamps();
         });
     }

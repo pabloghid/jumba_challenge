@@ -1,6 +1,7 @@
 <?php
 
 use App\Jobs\DownloadDataB3Job;
+use App\Services\InsertB3Data;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +17,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 
-    (new DownloadDataB3Job())->handle();
+    DownloadDataB3Job::dispatch();
+
+/*     $test = new InsertB3Data();
+
+    $data = $test->read_csv();
+
+    $insert = $test->execute($data); */
+
     return("Hello");
                     
 });

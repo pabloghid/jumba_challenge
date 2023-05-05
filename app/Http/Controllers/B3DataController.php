@@ -16,11 +16,9 @@ class B3DataController extends Controller
         }
 
         # retira o header
-        $header = $csv_data[0];
-        return $header;
         unset($csv_data[0]);
 
-
-        print("<pre>" . print_r($csv_data, true) . "</pre>");
+        /* print("<pre>" . print_r($csv_data, true) . "</pre>"); */
+        return $csv_data;
     }
 }

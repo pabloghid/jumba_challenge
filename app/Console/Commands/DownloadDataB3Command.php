@@ -25,32 +25,21 @@ class DownloadDataB3Command extends Command
      */
     public function handle()
     {
-        ## TODO: pegar dados de 7 dias anteriores
-        $url_b3 = "https://arquivos.b3.com.br/";
-        $url = $url_b3 . "/api/download/requestname?fileName=LendingOpenPosition&date=2023-05-03";
+        // TODO: Buscar ultimos 5 dias
+        $initial_url = 'https://arquivos.b3.com.br/api/download/requestname';
+        $params = ['fileName' => 'LendingOpenPosition', 'date' => '2023-05-03'];
+        
+        // Faz o request inicial para pegar a url e o token
+        $response = file_get_contents($initial_url . '?' . http_build_query($params));
+        $data = json_decode($response, true);
 
-        $response = file_get_contents($url);
-        $response_data = json_decode($response, true);
+        // Cria a URL com o token para download
+        $url = "https://arquivos.b3.com.br/api/download/?token=".$data['token'];
 
-        // Substitui o ~/ pela url e pega o token para utilizar no header
-        $download_url = str_replace("~/", $url_b3, $response_data["redirectUrl"]);
-        $token = $response_data["token"];
+        $file = file_get_contents($url);
 
-        $file_path = base_path() . '\temp\LendingOpenPositionFile_20230503_1.csv';
+        $savePath = base_path() . '\temp\LendingOpenPositionFile_20230503_1.csv';
+        file_put_contents($savePath, $file);
 
-        $context_options = array(
-            'http' => array(
-                'method' => 'GET',
-                'header' => "Authorization: Bearer $token\r\n"
-            )
-        );
-
-        $context = stream_context_create($context_options);
-
-        // Baixa o arquivo e armazena na pasta
-        file_put_contents($file_path, file_get_contents($download_url, false, $context));
-
-
-        ### TODO: Inserir no banco de dados
     }
 }

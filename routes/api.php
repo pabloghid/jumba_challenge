@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('openpositions', [App\Http\Controllers\OpenPositionController::class, 'index']);
+Route::get('assets', [App\Http\Controllers\OpenPositionController::class, 'loadAssets']);
+Route::get('assetdata/{asset}', [App\Http\Controllers\OpenPositionController::class, 'loadAssetData']);

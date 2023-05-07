@@ -15,18 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-
+Route::get('/', function() {
     DownloadDataB3Job::dispatch();
-
-/*     $test = new InsertB3Data();
-
-    $data = $test->read_csv();
-
-    $insert = $test->execute($data); */
-
-    return("Hello");
-                    
+    return view('index');
 });
+
 
 /* Route::get('scraper', [App\Http\Controllers\ScrapeController::class, 'scraper'])->name('scraper'); */

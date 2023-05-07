@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class OpenPositions extends Model
 {
     use HasFactory;
+    protected $table = 'open_positions';
+    protected $guarded = [];
+
 }

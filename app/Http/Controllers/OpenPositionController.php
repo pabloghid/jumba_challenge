@@ -15,10 +15,20 @@ class OpenPositionController extends Controller
 
     public function loadAssets()
     {
-        return OpenPositions::all('tracker_symbol');
+        $assets = OpenPositions::all('tracker_symbol');
+        
+        while ($assets->isEmpty()) {
+            sleep(5);
+            $assets = OpenPositions::all('tracker_symbol');
+        }
+        return $assets;
     }
     public function loadAssetData($asset){
-        $assetData = OpenPositions::where('tracker_symbol', $asset)->get();
+        $assetData = OpenPositions::where('tracker_symbol', $asset)
+        ->orderBy('date')
+        ->take(20)
+        ->get();
+        
         return $assetData;
     }
 }

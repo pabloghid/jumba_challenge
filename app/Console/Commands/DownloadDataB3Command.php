@@ -26,7 +26,9 @@ class DownloadDataB3Command extends Command
      */
     public function handle()
     {
-        $dates = DateHelper::getPast5Days();
+        ## Informação de quantos dias
+        $pastDates = 10;
+        $dates = DateHelper::getPastDays($pastDates);
 
         foreach ($dates as $date) {
             $initial_url = 'https://arquivos.b3.com.br/api/download/requestname';
@@ -59,8 +61,8 @@ class DownloadDataB3Command extends Command
 
             $insert = $b3Service->execute($data);
 
-            $clearTemp = $b3Service->clearTemp();
             ## Exclui registros na pasta temp
+            $clearTemp = $b3Service->clearTemp();
 
         }
     }

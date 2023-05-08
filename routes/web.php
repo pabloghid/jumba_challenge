@@ -1,7 +1,6 @@
 <?php
 
 use App\Jobs\DownloadDataB3Job;
-use App\Services\InsertB3Data;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +16,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function() {
     DownloadDataB3Job::dispatch();
-    return view('index');
+    return view('app');
 });
-
-
-/* Route::get('scraper', [App\Http\Controllers\ScrapeController::class, 'scraper'])->name('scraper'); */

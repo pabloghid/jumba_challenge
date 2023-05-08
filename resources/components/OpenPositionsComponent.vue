@@ -83,7 +83,6 @@ export default {
         async loadData(selectedAsset) {
             const assetDataResponse = await axios.get(`api/assetdata/${selectedAsset}`);
             const data = assetDataResponse.data;
-            console.log(data);
 
             const labels = formatDateArray(data.map(item => item.date))
             const quantity = data.map(item => item.balance_quantity)

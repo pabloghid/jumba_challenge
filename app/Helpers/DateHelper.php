@@ -4,11 +4,11 @@ namespace App\Helpers;
 
 class DateHelper
 {
-    public static function getPast5Days()
+    public static function getPastDays($days)
     {
         $dates = array();
-        $count = 1;
-        while (count($dates) < 6) {
+        $count = 0;
+        while (count($dates) < $days) {
             $day = date('Y-m-d', strtotime("-$count day"));
             if (self::isWeekend($day)) {
                 $count++;

@@ -1,6 +1,5 @@
 <?php
 
-use App\Jobs\DownloadDataB3Job;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function() {
-    DownloadDataB3Job::dispatch();
     return view('app');
 });

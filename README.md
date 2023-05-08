@@ -67,6 +67,6 @@ php artisan schedule:work
 
 Os dados são baixados da B3 diariamente às 8:30 da manhã. O gráfico é renderizado com os dados das tabelas de Posições em Aberto de Empréstimo de Ativos, com um limite de 20 dias. 
 
-Como padrão, foi definido o download da informação de 10 dias anteriores. Caso seja um fim de semana, não é baixado. Isso pode ser alterado no comando DownloadDataB3Command.
+Como padrão, foi definido o download da informação de 10 dias anteriores. Isso pode ser alterado no comando DownloadDataB3Command.
 
 Foi utilizado a bilbioteca Chart.js para criação do gráfico, além de css e bootstrap para a criação do visual.

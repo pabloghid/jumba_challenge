@@ -4,11 +4,10 @@ namespace App\Services;
 
 use App\Models\OpenPositions;
 use Carbon\Carbon;
-use App\Helpers\DateHelper;
 
-class InsertB3Data
+class B3DataService
 {
-    public function read_csv($data)
+    public function readCsv($data)
     {
 
         $filename = base_path() . "\\temp\LendingOpenPositionFile_$data.csv";
@@ -27,7 +26,7 @@ class InsertB3Data
 
     public function execute(array $data)
     {
-        
+
         $dataToInsert = [];
 
         // Transforma os dados do CSV em um array associativo para ser inserido no banco de dados
@@ -52,6 +51,16 @@ class InsertB3Data
             return True;
         } else if ($dataExists == False) {
             return OpenPositions::insert($dataToInsert);
+        }
+    }
+
+    public function clearTemp()
+    {
+        $files = glob(base_path() . '\temp\*');
+        foreach ($files as $file) {
+            if (is_file($file)) {
+                unlink($file);
+            }
         }
     }
 }

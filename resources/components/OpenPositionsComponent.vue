@@ -8,7 +8,7 @@
         <div class="row justify-content-center mb-3">
             <div class="col-md-4 text-center">
                 <select class="btn btn-secondary" v-model="selectedAsset" @change="loadData(selectedAsset)">
-                    <option v-for="(asset, index) in assets" :value="asset.tracker_symbol" :selected="index === 1"
+                    <option v-for="asset in assets" :value="asset.id"
                         class="form-select-option">{{
                             asset.tracker_symbol }}</option>
                 </select>
@@ -62,7 +62,7 @@ export default {
     data() {
         return {
             assets: [],
-            selectedAsset: 'ABEV3',
+            selectedAsset: 24,
             data: {},
             options: {},
             chartInitialized: false,

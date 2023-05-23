@@ -16,8 +16,6 @@ class OpenPositionsResource extends JsonResource
     {
         return [
             'date' => $this->date,
-            'tracker_symbol' => $this->tracker_symbol,
-            'asset' => $this->asset,
             'balance_quantity' => $this->balance_quantity,
             'trade_average_price' => $this->trade_average_price,
             'balance_value' => $this->balance_value

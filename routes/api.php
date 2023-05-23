@@ -19,5 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('openpositions', [App\Http\Controllers\OpenPositionController::class, 'index']);
-Route::get('assets', [App\Http\Controllers\OpenPositionController::class, 'loadAssets']);
-Route::get('assetdata/{asset}', [App\Http\Controllers\OpenPositionController::class, 'loadAssetData']);
+Route::get('assets', [App\Http\Controllers\AssetController::class, 'loadAssets']);
+Route::get('assetdata/{asset_id}', [App\Http\Controllers\OpenPositionController::class, 'loadAssetData']);

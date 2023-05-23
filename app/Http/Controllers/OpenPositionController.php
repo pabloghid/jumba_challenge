@@ -13,18 +13,9 @@ class OpenPositionController extends Controller
         return OpenPositionsResource::collection(OpenPositions::all());
     }
 
-    public function loadAssets()
-    {
-        $assets = OpenPositions::all('tracker_symbol');
-        
-        while ($assets->isEmpty()) {
-            sleep(5);
-            $assets = OpenPositions::all('tracker_symbol');
-        }
-        return $assets;
-    }
+    /* TODO: Where com o asset_id */
     public function loadAssetData($asset){
-        $assetData = OpenPositions::where('tracker_symbol', $asset)
+        $assetData = OpenPositions::where('asset_id', $asset)
         ->orderBy('date')
         ->take(20)
         ->get();
